@@ -1,1 +1,27 @@
-<p>usuarios works!</p>
+<table class="table table-hover">
+  <thead class="thead-light">
+    <th>Cédula</th>
+    <th>Nombres</th>
+    <th>Correo</th>
+    <th>Teléfono</th>
+    <th>
+      <a class="btn btn-sm btn-success text-white" (click)="addOrEditUsuario(null)"><i class="fa fa-plus-square"></i> Crear usuario</a>
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngIf="usuarios.length==0">
+      <td class="font-italic text-center" colspan="5">
+        No se encontraron registros en el sistema
+      </td>
+    </tr>
+    <tr *ngFor="let item of usuarios; let i = index;">
+      <th >{{item.cedula}}</th>
+      <th >{{item.nombres}} {{item.apellidos}}</th>
+      <td >{{item.correo}}</td>
+      <td >{{item.telefono}}</td>
+      <td>
+          <a class="btn btn-sm btn-info text-white"><i class="fa fa-pencil"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>

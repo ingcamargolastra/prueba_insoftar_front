@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UsuarioService } from './services/usuario.service';
+import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     BrowserModule,
