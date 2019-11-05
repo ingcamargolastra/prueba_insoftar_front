@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef, MatDialog} from '@angular/material';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearUsuarioComponent implements OnInit {
 
-  constructor() { }
+  usuario:Usuario;
+  errores:any = [];
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data,
+    public dialogRef:MatDialogRef<CrearUsuarioComponent>
+  ) { }
 
   ngOnInit() {
+    this.usuario = {
+      id:null,
+      nombres:'',
+      apellidos:'',
+      cedula:'',
+      correo:'',
+      telefono:''
+    }
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../services/usuario.service';
 import { Usuario } from '../models/usuario.model';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 
 @Component({
   selector: 'app-usuarios',
@@ -10,13 +12,18 @@ import { Usuario } from '../models/usuario.model';
 export class UsuariosComponent implements OnInit {
 
   usuarios:Usuario[] = [];
-  constructor(private service:UsuarioService) { }
+  constructor(private service:UsuarioService, private dialog:MatDialog) { }
 
   ngOnInit() {
   }
 
   addOrEditUsuario(usuarioIndex){
-
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "50%";
+    dialogConfig.data = {usuarioIndex};
+    this.dialog.open(CrearUsuarioComponent, dialogConfig);
   }
 
 }

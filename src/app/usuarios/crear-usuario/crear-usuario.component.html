@@ -1,1 +1,84 @@
-<p>crear-usuario works!</p>
+<h4 class="display-4">Nuevo Usuario</h4>
+<hr>
+<form #usuarioForm="ngForm" (ngSubmit)="guardarUsuario(usuarioForm)" novalidate>
+        <div class="alert alert-danger alert" *ngIf="errores.length > 0">
+            <label><b>Corrige los errores:</b></label>
+            <ul>
+                <div *ngFor="let error of errores">
+                    <li>
+                        <p>{{error}}</p>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <fieldset>
+            <div class="alert alert-info">
+                Todos los campos son obligatorios
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="cedula">Cédula</label>
+                        <input type="number" name="cedula" id="cedula" class="form-control" [ngClass]="{'is-invalid': ((usuarioForm.submitted || cedula.touched) && (cedula.errors) )}" [(ngModel)]="usuario.cedula" required #cedula="ngModel" placeholder="No. de cedula" maxlength="50" />
+                        <div class="invalid-feedback" *ngIf="((usuarioForm.submitted || cedula.touched) && (cedula.errors?.required) )">
+                            Campo requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="nombres">Nombres</label>
+                        <input type="text" name="nombres" id="nombres" class="form-control" [ngClass]="{'is-invalid': ((usuarioForm.submitted || nombres.touched) && (nombres.errors) )}" [(ngModel)]="usuario.nombres" required #nombres="ngModel" placeholder="Nombres" maxlength="455" />
+                        <div class="invalid-feedback" *ngIf="((usuarioForm.submitted || nombres.touched) && (nombres.errors?.required) )">
+                            Campo requerido.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" name="apellidos" id="apellidos" class="form-control" [ngClass]="{'is-invalid': ((usuarioForm.submitted || apellidos.touched) && (apellidos.errors) )}" [(ngModel)]="usuario.apellidos" required #apellidos="ngModel" placeholder="Apellidos" maxlength="455" />
+                        <div class="invalid-feedback" *ngIf="((usuarioForm.submitted || apellidos.touched) && (apellidos.errors?.required) )">
+                            Campo requerido.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="correo">Correo</label>
+                        <input type="email" name="correo" id="correo" class="form-control" [ngClass]="{'is-invalid': ((usuarioForm.submitted || correo.touched) && (correo.errors) )}" [(ngModel)]="usuario.correo" [email]="true" required #correo="ngModel" placeholder="Correo electrónico ej. ejemplo@mail.com" maxlength="255" />
+                        <div class="invalid-feedback" *ngIf="((usuarioForm.submitted || correo.touched) && (correo.errors?.required) )">
+                            Campo requerido.
+                        </div>
+                        <div class="invalid-feedback" *ngIf="((usuarioForm.submitted || correo.touched) && (correo.errors?.email) )">
+                            Formato invalido.
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="number" name="telefono" id="telefono" class="form-control" [ngClass]="{'is-invalid': ((usuarioForm.submitted || telefono.touched) && (telefono.errors) )}" [(ngModel)]="usuario.telefono" required #telefono="ngModel" placeholder="Teléfono" maxlength="100" />
+                        <div class="invalid-feedback" *ngIf="((usuarioForm.submitted || telefono.touched) && (telefono.errors?.required) )">
+                            Campo requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <button type="submit" [disabled]="!usuarioForm.valid" class="btn btn-dark"><i class="fa fa-database"></i> Guardar</button>
+                  <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Cerrar</button>
+                </div>
+              </div>
+            </div>
+        </fieldset>
+
+</form>
