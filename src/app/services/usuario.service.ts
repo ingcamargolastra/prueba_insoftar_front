@@ -6,7 +6,8 @@ import { Usuario } from '../models/usuario.model';
 })
 export class UsuarioService {
 
-  formData:Usuario; 
+  formData:Usuario;
+  usuarios:Usuario[] = [];
 
   constructor() { }
 }
