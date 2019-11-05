@@ -9,12 +9,12 @@
     </th>
   </thead>
   <tbody>
-    <tr *ngIf="service.usuarios.length==0">
+    <tr *ngIf="usuarioService.usuarios.length==0">
       <td class="font-italic text-center" colspan="5">
         No se encontraron registros en el sistema
       </td>
     </tr>
-    <tr *ngFor="let item of service.usuarios; let i = index;">
+    <tr *ngFor="let item of usuarioService.usuarios; let i = index;">
       <td >{{item.cedula}}</td>
       <td >{{item.nombres}} {{item.apellidos}}</td>
       <td >{{item.correo}}</td>

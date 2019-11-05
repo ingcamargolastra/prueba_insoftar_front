@@ -11,7 +11,11 @@ import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 })
 export class UsuariosComponent implements OnInit {
 
-  constructor(private service:UsuarioService, private dialog:MatDialog) { }
+  constructor(private usuarioService:UsuarioService, private dialog:MatDialog) {
+    this.usuarioService.getUsuarios().subscribe(data => {
+      this.usuarioService.usuarios = data['data'];
+    });
+  }
 
   ngOnInit() {
   }

@@ -17,7 +17,7 @@ export class CrearUsuarioComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     public dialogRef:MatDialogRef<CrearUsuarioComponent>,
-    private service:UsuarioService
+    private usuarioService:UsuarioService
   ) { }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class CrearUsuarioComponent implements OnInit {
     if(!form.valid){
       return;
     }
-    this.service.usuarios.push(this.usuario);
+    this.usuarioService.usuarios.push(this.usuario);
     this.dialogRef.close();
   }
 
