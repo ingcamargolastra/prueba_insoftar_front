@@ -1,4 +1,5 @@
-<h4>Nuevo Usuario</h4>
+<h4 *ngIf="!usuario.id">Nuevo Usuario</h4>
+<h4 *ngIf="usuario.id">Modificar Usuario</h4>
 <hr>
 <form #usuarioForm="ngForm" (ngSubmit)="guardarUsuario(usuarioForm)" novalidate>
         <div class="alert alert-danger alert" *ngIf="errores.length > 0">
@@ -56,7 +57,7 @@
                           Este campo es requerido.
                         </div>
                         <div class="invalid-feedback" *ngIf="((usuarioForm.submitted || correo.touched) && (correo.errors?.email) )">
-                            Formato invalido.
+                            Ingrese un correo válido. Ex: ej@mail.com.
                         </div>
                     </div>
 

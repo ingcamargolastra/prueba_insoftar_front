@@ -25,13 +25,17 @@ export class CrearUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.usuario = {
-      id:null,
-      nombres:'',
-      apellidos:'',
-      cedula:'',
-      correo:'',
-      telefono:''
+    if(this.data.usuario){
+      this.usuario = Object.assign({}, this.data.usuario);
+    }else{
+      this.usuario = {
+        id:null,
+        nombres:'',
+        apellidos:'',
+        cedula:'',
+        correo:'',
+        telefono:''
+      }
     }
   }
 
@@ -42,10 +46,16 @@ export class CrearUsuarioComponent implements OnInit {
     this.errores = [];
     this.spinner.show();
     
-    if(!this.data.usuarioIndex){
+    if(!this.data.usuario){
+      console.log(this.data);
       this.usuarioService.guardarUsuario(this.usuario).subscribe(
         data => this.handleGuardarResponse(data),
         err => this.handleGuardarError(err),
+      );
+    }else{
+      this.usuarioService.modificarUsuario(this.usuario).subscribe(
+        data => this.handleModificarResponse(data),
+        err => this.handleModificarError(err),
       );
     }
   }
@@ -65,6 +75,25 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   handleGuardarError(err){
+    this.toastr.error('Ocurrio un error interno en el servidor. ', 'Error');
+    this.spinner.hide();
+  }
+
+  handleModificarResponse(data){
+    if(data.success){
+      this.errores = [];
+      this.usuarioService.usuarios[this.data.usuarioIndex] = (data.usuario);
+      this.dialogRef.close();
+      this.spinner.hide();
+      this.toastr.success('Usuario modificado satisfactoriamente. ', 'Exito');
+    }else{
+      this.toastr.error('Error validando la información. ', 'Error');
+      this.errores = data.errores;
+      this.spinner.hide();
+    }
+  }
+
+  handleModificarError(err){
     this.toastr.error('Ocurrio un error interno en el servidor. ', 'Error');
     this.spinner.hide();
   }

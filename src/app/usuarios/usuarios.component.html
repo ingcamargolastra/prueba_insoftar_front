@@ -5,7 +5,7 @@
     <th>Correo</th>
     <th>Teléfono</th>
     <th>
-      <a class="btn btn-sm btn-success text-white" (click)="addOrEditUsuario(null)"><i class="fa fa-plus-square"></i> Crear usuario</a>
+      <a class="btn btn-sm btn-success text-white" (click)="addOrEditUsuario(null,null)"><i class="fa fa-plus-square"></i> Crear usuario</a>
     </th>
   </thead>
   <tbody>
@@ -20,7 +20,7 @@
       <td >{{item.correo}}</td>
       <td >{{item.telefono}}</td>
       <td>
-          <a class="btn btn-sm btn-info text-white"><i class="fa fa-pencil"></i></a>
+          <a class="btn btn-sm btn-info text-white" (click)="addOrEditUsuario(i, item)"><i class="fa fa-pencil"></i></a>
       </td>
     </tr>
   </tbody>

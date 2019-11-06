@@ -21,4 +21,8 @@ export class UsuarioService {
   guardarUsuario(usuario): Observable<any>{
     return this.http.post(environment.apiURL+'usuarios',usuario,{headers:environment.headers});
   }
+
+  modificarUsuario(usuario): Observable<any>{
+    return this.http.put(environment.apiURL+'usuarios/'+usuario.id,usuario,{headers:environment.headers});
+  }
 }

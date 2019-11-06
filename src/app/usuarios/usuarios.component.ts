@@ -25,12 +25,12 @@ export class UsuariosComponent implements OnInit {
   ngOnInit() {
   }
 
-  addOrEditUsuario(usuarioIndex){
+  addOrEditUsuario(usuarioIndex, usuario){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
-    dialogConfig.data = {usuarioIndex};
+    dialogConfig.data = {usuarioIndex, usuario};
     this.dialog.open(CrearUsuarioComponent, dialogConfig);
   }
 
