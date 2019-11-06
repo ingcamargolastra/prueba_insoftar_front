@@ -1,0 +1,7 @@
+<h4 mat-dialog-title><strong>Eliminar usuario</strong></h4>
+<mat-dialog-content>Usted esta a punto de eliminar al usuario <strong>{{usuario.nombres}} {{usuario.apellidos}}.</strong> ¿Esta seguro?</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button class="btn btn-outline-danger ml-1" mat-dialog-close>No</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="true" class="btn btn-outline-dark ml-1" (click)="eliminarUsuario()">Si</button>
+</mat-dialog-actions>

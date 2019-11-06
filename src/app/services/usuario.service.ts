@@ -25,4 +25,8 @@ export class UsuarioService {
   modificarUsuario(usuario): Observable<any>{
     return this.http.put(environment.apiURL+'usuarios/'+usuario.id,usuario,{headers:environment.headers});
   }
+
+  eliminarUsuario(usuario): Observable<any>{
+    return this.http.delete(environment.apiURL+'usuarios/'+usuario.id,{headers:environment.headers});
+  }
 }

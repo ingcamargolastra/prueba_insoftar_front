@@ -6,18 +6,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule } from 'ngx-toastr';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UsuarioService } from './services/usuario.service';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
+import { EliminarUsuarioComponent } from './usuarios/eliminar-usuario/eliminar-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuariosComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    EliminarUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +30,10 @@ import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.co
     FormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    Ng2SearchPipeModule
   ],
-  entryComponents:[CrearUsuarioComponent],
+  entryComponents:[CrearUsuarioComponent, EliminarUsuarioComponent],
   providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
