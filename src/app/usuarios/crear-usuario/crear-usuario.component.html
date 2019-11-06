@@ -2,7 +2,7 @@
 <hr>
 <form #usuarioForm="ngForm" (ngSubmit)="guardarUsuario(usuarioForm)" novalidate>
         <div class="alert alert-danger alert" *ngIf="errores.length > 0">
-            <label><b>Corrige los errores:</b></label>
+            <label><b>Revise los errores:</b></label>
             <ul>
                 <div *ngFor="let error of errores">
                     <li>

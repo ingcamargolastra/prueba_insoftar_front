@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../services/usuario.service';
-import { Usuario } from '../models/usuario.model';
+import { NgxSpinnerService } from "ngx-spinner";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 
@@ -11,10 +11,15 @@ import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 })
 export class UsuariosComponent implements OnInit {
 
-  constructor(private usuarioService:UsuarioService, private dialog:MatDialog) {
-    this.usuarioService.getUsuarios().subscribe(data => {
-      this.usuarioService.usuarios = data['data'];
-    });
+  constructor(private usuarioService:UsuarioService, private dialog:MatDialog, private spinner:NgxSpinnerService) {
+    this.spinner.show()
+    this.usuarioService.getUsuarios().subscribe(
+      data => {
+        this.usuarioService.usuarios = data['data'];
+      },
+      err => console.log(),
+      ()=>this.spinner.hide()      
+    );
   }
 
   ngOnInit() {

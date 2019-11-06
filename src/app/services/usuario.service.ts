@@ -17,4 +17,8 @@ export class UsuarioService {
   getUsuarios(): Observable<any>{
     return this.http.get(environment.apiURL+'usuarios',{headers:environment.headers});
   }
+
+  guardarUsuario(usuario): Observable<any>{
+    return this.http.post(environment.apiURL+'usuarios',usuario,{headers:environment.headers});
+  }
 }
